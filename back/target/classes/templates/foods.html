@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Management</title>
+</head>
+<body>
+    <h2>Add Food</h2>
+    <form th:action="@{/foods}" method="post">
+        <label>Title:</label>
+        <input type="text" name="title"><br>
+        <label>Price:</label>
+        <input type="number" name="price"><br>
+        <label>Image URL:</label>
+        <input type="text" name="imageUrl"><br>
+        <button type="submit">Add Food</button>
+    </form>
+
+    <h2>Food List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Image URL</th>
+                <th>Actions</th> <!-- New column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="food : ${foods}">
+                <td th:text="${food.id}"></td>
+                <td th:text="${food.title}"></td>
+                <td th:text="${food.price}"></td>
+                <td th:text="${food.imageUrl}"></td>
+                <td>
+                    <a th:href="@{'/foods/' + ${food.id} + '/edit'}">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

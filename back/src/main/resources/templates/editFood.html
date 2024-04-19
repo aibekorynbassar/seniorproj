@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Food</title>
+</head>
+<body>
+    <h2>Edit Food</h2>
+    <form th:action="@{'/foods/' + ${food.id} + '/edit'}" th:object="${food}" method="post">
+        <input type="hidden" th:field="*{id}" /> <!-- Hidden field for food ID -->
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" /><br>
+        <label>Price:</label>
+        <input type="number" th:field="*{price}" /><br>
+        <label>Image URL:</label>
+        <input type="text" th:field="*{imageUrl}" /><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
